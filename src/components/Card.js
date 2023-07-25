@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 const Card = ({ isUserLoggedIn }) => {
   const navigate = useNavigate();
 
+  // function to display toast on add to deals button
   function addToDealsClickHandler() {
     // to dismiss already displayed toasts before rendering new one
     toast.dismiss();
@@ -19,6 +20,7 @@ const Card = ({ isUserLoggedIn }) => {
     }
   }
 
+  // function to display toast on check deals button
   function checkDealsClickHandler() {
     // to dismiss already displayed toasts before rendering new one
     toast.dismiss();
