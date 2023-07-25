@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "../Card";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const HomePage = ({ isUserLoggedIn }) => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const HomePage = ({ isUserLoggedIn }) => {
           <button
             className="rounded-lg px-[1rem] py-[0.5rem] bg-blue-500 text-white font-semibold text-sm mb-[1.5rem]"
             onClick={() => {
+              toast.success("Logged out successfully!");
               sessionStorage.clear();
               localStorage.clear();
               navigate("/login");

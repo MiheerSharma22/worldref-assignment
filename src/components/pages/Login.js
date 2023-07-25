@@ -46,6 +46,7 @@ const Login = ({ setIsUserLoggedIn }) => {
       return;
     }
 
+    // if stay signed in is checked while logging in, setting email into localStorage else into sessionStorage
     if (isChecked) {
       localStorage.setItem("email", formData.email);
     } else {
@@ -61,7 +62,9 @@ const Login = ({ setIsUserLoggedIn }) => {
     <div className="w-full h-full flex items-center justify-center">
       {/* login container */}
       <div className="py-[2rem] px-[0.4rem] flex flex-col gap-8 rounded-lg loginContainer">
-        <h2 className="text-[2rem] font-semibold px-[15rem]">Seller Log in</h2>
+        <h2 className="text-[1.5rem] md:text-[2rem] font-semibold px-[6.5rem] md:px-[15rem]">
+          Seller Log in
+        </h2>
 
         <div className="border-t-2 border-slate-300 flex items-center justify-center">
           {/* form */}
@@ -78,7 +81,7 @@ const Login = ({ setIsUserLoggedIn }) => {
               </label>
               {/* email error text */}
               {showEmailError && (
-                <p className="text-red-600 text-sm font-medium">
+                <p className="text-red-600 text-xs md:text-sm font-medium">
                   This account doesn’t exist. Enter a different account or{" "}
                   <span className="text-blue-500">create a new one</span>
                 </p>
@@ -107,7 +110,7 @@ const Login = ({ setIsUserLoggedIn }) => {
 
               {/* password error text */}
               {showPasswordError && (
-                <p className="text-red-600 text-sm font-medium">
+                <p className="text-red-600 text-[0.7rem] md:text-sm font-medium">
                   Your password is incorrect. If you don’t remember your
                   password <span className="text-blue-500">reset it now</span>
                 </p>
@@ -137,7 +140,7 @@ const Login = ({ setIsUserLoggedIn }) => {
             </div>
 
             {/* stay signed in and forgot password text */}
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col gap-3 md:flex-row md:justify-between items-center">
               <div className="flex flex-row-reverse gap-3">
                 <label htmlFor="check" className="font-medium">
                   Stay signed in
@@ -167,8 +170,8 @@ const Login = ({ setIsUserLoggedIn }) => {
               Log In
             </button>
 
-            {/* text to route to register */}
-            <p className="text-center font-semibold text-lg">
+            {/* text to register */}
+            <p className="text-center font-semibold text-[0.875rem] md:text-lg">
               Don’t Have An Account?{" "}
               <span className="text-blue-600"> Create Account</span>
             </p>

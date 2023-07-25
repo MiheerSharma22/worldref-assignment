@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./components/pages/HomePage";
 import Login from "./components/pages/Login";
-import Register from "./components/pages/Register";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -29,10 +28,6 @@ function App() {
         <Route
           path="/login"
           element={<Login setIsUserLoggedIn={setIsUserLoggedIn} />}
-        />
-        <Route
-          path="/register"
-          element={<Register setIsUserLoggedIn={setIsUserLoggedIn} />}
         />
       </Routes>
     </div>

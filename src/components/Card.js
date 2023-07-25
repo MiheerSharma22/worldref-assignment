@@ -34,13 +34,13 @@ const Card = ({ isUserLoggedIn }) => {
   return (
     <div className="card flex flex-col w-full rounded-xl border border-slate-300">
       {/* upper */}
-      <div className="flex border-b border-slate-300">
+      <div className="flex flex-col md:flex-row border-b border-slate-300">
         {/* left -> date, id and verified */}
-        <div className="flex w-[80%] justify-between items-center p-[1.7rem] border-r border-slate-300">
+        <div className="flex md:w-[80%] justify-between items-center p-[1rem] md:p-[1.7rem] border-b md:border-r border-slate-300">
           <p>1 Feb 2023</p>
 
           {/* id and verified container */}
-          <div className="flex justify-between w-[40%]">
+          <div className="flex flex-col md:flex-row justify-between w-[50%] md:w-[40%]">
             {/* id */}
             <div className="flex gap-5">
               <p className="font-bold">RFQ ID</p>
@@ -53,16 +53,16 @@ const Card = ({ isUserLoggedIn }) => {
         </div>
 
         {/* right -> closing date */}
-        <div className="w-[20%] flex items-center justify-center gap-5">
+        <div className="md:w-[20%] flex items-center justify-center gap-5">
           <p className="font-bold">Closing Date</p>
           <p>25 Feb 2023</p>
         </div>
       </div>
 
       {/* lower */}
-      <div className="flex">
+      <div className="flex md:flex-row flex-col">
         {/* left */}
-        <div className="w-[80%] flex flex-col gap-5 p-[1.7rem] border-r border-slate-300">
+        <div className="md:w-[80%] flex flex-col gap-5 p-[1rem] md:p-[1.7rem] border-r border-slate-300">
           {/* deal number and share button */}
           <div className="flex justify-between items-center">
             <p>
@@ -85,12 +85,11 @@ const Card = ({ isUserLoggedIn }) => {
           {/* lorem text */}
           <p>
             Supply AC Stator Coil Dummy Text Lorem Ipsem Dummy Supply AC Stator
-            Coil Dummy Text Lorem Supply AC Stator Coil Dummy Text Lorem. Supply
-            AC Stator Coil Dummy{" "}
+            Coil
           </p>
 
           {/* tags */}
-          <div className="flex gap-3 mt-[0.5rem]">
+          <div className="flex w-full flex-wrap gap-3 mt-[0.5rem]">
             <div className="px-[1rem] py-[0.1rem] bg-blue-100 text-[0.875rem] rounded-full">
               <p>Product</p>
             </div>
@@ -110,7 +109,7 @@ const Card = ({ isUserLoggedIn }) => {
         </div>
 
         {/* right -> buttons */}
-        <div className="w-[20%] flex flex-col items-center justify-center gap-5">
+        <div className="md:w-[20%] pb-4 md:pb-0 flex flex-col items-center justify-center gap-5">
           <button
             className="px-[1.5rem] py-[0.75rem] rounded-lg bg-blue-500 text-white font-medium"
             onClick={addToDealsClickHandler}
