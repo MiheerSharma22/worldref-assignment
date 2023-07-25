@@ -8,16 +8,26 @@ const Card = ({ isUserLoggedIn }) => {
   const navigate = useNavigate();
 
   function addToDealsClickHandler() {
+    // to dismiss already displayed toasts before rendering new one
+    toast.dismiss();
+
     if (!isUserLoggedIn) {
       toast.error("Please Log In first!");
       navigate("/login");
+    } else {
+      toast.success("Button Clicked: Add to Deals");
     }
   }
 
   function checkDealsClickHandler() {
+    // to dismiss already displayed toasts before rendering new one
+    toast.dismiss();
+
     if (!isUserLoggedIn) {
       toast.error("Please Log In first!");
       navigate("/login");
+    } else {
+      toast.success("Button Clicked: Check Details");
     }
   }
 
@@ -67,7 +77,7 @@ const Card = ({ isUserLoggedIn }) => {
           {/* spare parts and live */}
           <div className=" flex gap-5 items-center">
             <p className="font-bold">Spare Parts</p>
-            <div className="px-[1rem] bg-blue-500 text-white font-medium text-sm rounded-full">
+            <div className="px-[1rem] bg-blue-500 text-white font-medium text-[0.875rem] rounded-full">
               Live
             </div>
           </div>
@@ -81,19 +91,19 @@ const Card = ({ isUserLoggedIn }) => {
 
           {/* tags */}
           <div className="flex gap-3 mt-[0.5rem]">
-            <div className="px-[1rem] py-[0.1rem] bg-blue-100 text-sm rounded-full">
+            <div className="px-[1rem] py-[0.1rem] bg-blue-100 text-[0.875rem] rounded-full">
+              <p>Product</p>
+            </div>
+            <div className="px-[1rem] py-[0.1rem] bg-blue-100 text-[0.875rem] rounded-full">
               Product
             </div>
-            <div className="px-[1rem] py-[0.1rem] bg-blue-100 text-sm rounded-full">
-              Product
-            </div>
-            <div className="px-[1rem] py-[0.1rem] bg-blue-100 text-sm rounded-full">
+            <div className="px-[1rem] py-[0.1rem] bg-blue-100 text-[0.875rem] rounded-full">
               Agriculture
             </div>
-            <div className="px-[1rem] py-[0.1rem] bg-blue-100 text-sm rounded-full">
+            <div className="px-[1rem] py-[0.1rem] bg-blue-100 text-[0.875rem] rounded-full">
               Product
             </div>
-            <div className="px-[1rem] py-[0.1rem] bg-blue-100 text-sm rounded-full">
+            <div className="px-[1rem] py-[0.1rem] bg-blue-100 text-[0.875rem] rounded-full">
               Product
             </div>
           </div>

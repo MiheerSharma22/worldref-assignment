@@ -1,8 +1,16 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { FiEyeOff, FiEye } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setIsUserLoggedIn }) => {
+  const email = "test@gmail.com";
+  const password = "test";
+
+  const [showEmailError, setShowEmailError] = useState(false);
+  const [showPasswordError, setShowPasswordError] = useState(false);
+
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(true);
 
@@ -11,23 +19,49 @@ const Login = ({ setIsUserLoggedIn }) => {
     password: "",
   });
 
+  // function to handle form's state changes
   function formChangeHandler(event) {
+    // making both error texts hide
+    setShowEmailError(false);
+    setShowPasswordError(false);
+
     setFormData((prevState) => ({
       ...prevState,
       [event.target.name]: event.target.value,
     }));
   }
 
-  function submitHandler() {
-    //todo: on clicking on login check is stay signed in is checked or not, if yes then localStorage else sessionStorage
-    //todo: if successful response from server then setIsLoggedIn to true
+  // function to handle form submission
+  function submitHandler(event) {
+    // if email id do not match return with error message
+    if (formData.email !== email) {
+      event.preventDefault();
+      setShowEmailError(true);
+      return;
+    }
+    // if password do not match return with error message
+    else if (formData.password !== password) {
+      event.preventDefault();
+      setShowPasswordError(true);
+      return;
+    }
+
+    if (isChecked) {
+      localStorage.setItem("email", formData.email);
+    } else {
+      sessionStorage.setItem("email", formData.email);
+    }
+
+    toast.success("Successfully Logged in!");
+    setIsUserLoggedIn(true);
+    navigate("/");
   }
 
   return (
     <div className="w-full h-full flex items-center justify-center">
       {/* login container */}
       <div className="py-[2rem] px-[0.4rem] flex flex-col gap-8 rounded-lg loginContainer">
-        <h2 className="text-[2rem] font-semibold px-[13rem]">Seller Log in</h2>
+        <h2 className="text-[2rem] font-semibold px-[15rem]">Seller Log in</h2>
 
         <div className="border-t-2 border-slate-300 flex items-center justify-center">
           {/* form */}
@@ -42,6 +76,14 @@ const Login = ({ setIsUserLoggedIn }) => {
                   Email ID<span className="text-red-600 text-[1.2rem] ">*</span>
                 </p>
               </label>
+              {/* email error text */}
+              {showEmailError && (
+                <p className="text-red-600 text-sm font-medium">
+                  This account doesn’t exist. Enter a different account or{" "}
+                  <span className="text-blue-500">create a new one</span>
+                </p>
+              )}
+
               <input
                 type="email"
                 id="email"
@@ -62,6 +104,14 @@ const Login = ({ setIsUserLoggedIn }) => {
                   Password<span className="text-red-600 text-[1.2rem] ">*</span>
                 </p>
               </label>
+
+              {/* password error text */}
+              {showPasswordError && (
+                <p className="text-red-600 text-sm font-medium">
+                  Your password is incorrect. If you don’t remember your
+                  password <span className="text-blue-500">reset it now</span>
+                </p>
+              )}
 
               <div className="flex items-center justify-between w-full border border-slate-300 px-[1rem] py-[0.5rem] rounded-lg">
                 <input
@@ -120,9 +170,7 @@ const Login = ({ setIsUserLoggedIn }) => {
             {/* text to route to register */}
             <p className="text-center font-semibold text-lg">
               Don’t Have An Account?{" "}
-              <Link to={"/register"}>
-                <span className="text-blue-600"> Create Account</span>
-              </Link>
+              <span className="text-blue-600"> Create Account</span>
             </p>
           </form>
         </div>
